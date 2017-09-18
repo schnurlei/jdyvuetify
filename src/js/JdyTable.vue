@@ -39,21 +39,6 @@
 </template>
 
 <script>
-  var columns = [
-          {
-            text: 'Dessert (100g serving)',
-            left: true,
-            sortable: false,
-            value: item => item['name']
-          },
-          { text: 'Calories', value: item => item['calories']},
-          { text: 'Fat (g)', value: item => item['fat'] },
-          { text: 'Carbs (g)', value: item => item['carbs'] },
-          { text: 'Protein (g)', value: item => item['protein'] },
-          { text: 'Sodium (mg)', value: item => item['sodium'] },
-          { text: 'Calcium (%)', value: item => item['calcium'] },
-          { text: 'Iron (%)', value: item => item['iron'] }
-    ];  
   var editHeader = [
         {
             text: 'Edit',
@@ -69,17 +54,21 @@
     data () {
       return {
         isEditDialogVisible: false,
-        columns: columns,
-        headers: editHeader.concat(columns),
         selectedItem: null
       }
     }, 
-    props: ['items'],
+    props: ['items', 'columns'],
+    computed: {
+      // a computed getter
+      headers: function () {
+        return editHeader.concat(this.columns);
+      }
+    },
     methods: {
       editInDialog: function (listItem, event) {
         // `this` inside methods points to the Vue instance
         this.isEditDialogVisible = true;
-        this.selectedItem = listItem
+        this.selectedItem = listItem;
         console.log('Hello ' + listItem.name + '!');
       },
       deleteItem: function (listItem, event) {
