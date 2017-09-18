@@ -31,7 +31,6 @@ export const testCreatePlantShopRepository = function () {
 	customerType =  rep.addClassInfo("Customer");
 	customerType.addTextAttr("CustomerId", 30).setIsKey(true);
 	customerType.addTextAttr("FirstName", 30).setNotNull(true);
-	customerType.addTextAttr("MiddleName", 30).setNotNull(false);
 	customerType.addTextAttr("LastName", 30).setNotNull(true);
 	orderItemType.addReference("PrivateAddress", addressType).setIsDependent(true).setNotNull(true);
 	orderItemType.addReference("InvoiceAddress", addressType).setIsDependent(true).setNotNull(false);

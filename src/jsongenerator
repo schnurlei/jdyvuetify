@@ -1,0 +1,22 @@
+[
+  {
+    'repeat(5, 10)': {
+      CustomerId: '{{objectId()}}',
+      FirstName: '{{firstName()}}',
+      LastName: '{{surname}}',
+      isActive: '{{bool()}}',
+      PrivateAddress: {
+        AddressId: '{{firstName()}}',
+        Street: '{{street()}}',
+        ZipCode: '{{integer(10000, 99999)}}',
+        City: '{{city()}}'
+      },
+      InvoiceAddress: {
+        AddressId: '{{firstName()}}',
+        Street: '{{street()}}',
+        ZipCode: '{{integer(10000, 99999)}}',
+        City: '{{city()}}'
+      }
+    }
+  }
+]
