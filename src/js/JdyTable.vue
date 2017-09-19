@@ -42,7 +42,7 @@
   var editHeader = [
         {
             text: 'Edit',
-            left: true,
+            align: 'left',
             sortable: false,
             value: item => ''
           },

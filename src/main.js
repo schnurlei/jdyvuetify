@@ -13,11 +13,12 @@ Vue.use(VueRouter);
 Vue.use(Vuetify);
 
 const plantRepository = testCreatePlantShopRepository();
-plantRepository.getClassInfo('Test');
 
 function dynamicPropsFn (route) {
+  
+  const classInfo = plantRepository.getClassInfo(route.params.classinfo);
   return {
-    classinfo: route.params.classinfo
+    classinfo: classInfo
   };
 }
 
@@ -36,9 +37,9 @@ const app = new Vue({
       return {
         drawer: true,
         menuitems: [
-          { title: 'Home', icon: 'dashboard', href: '#/foo/data1'},
-          { title: 'Foo', icon: 'question_answer', href: '#/foo/data2' },
-          { title: 'About', icon: 'question_answer', href: '#/foo/data3' }
+          { title: 'Home', icon: 'dashboard', href: '#/foo/Plant'},
+          { title: 'Foo', icon: 'question_answer', href: '#/foo/Customer' },
+          { title: 'About', icon: 'question_answer', href: '#/foo/PlantOrder' }
         ],
         right: null
       };
