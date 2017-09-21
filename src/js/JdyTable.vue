@@ -5,18 +5,14 @@
         <v-card-row>
           <v-card-title>Edit Object</v-card-title>
         </v-card-row>
-        <v-card-row>          
-            <v-card-text>
-                <v-text-field v-for="jdycolumn in columns" v-bind:key="jdycolumn.text" :label="jdycolumn.text" 
-                    v-bind:value="getItemValue(jdycolumn.value)" v-on:input="updateItemValue(jdycolumn.value, $event)"></v-text-field>
-            </v-card-text>    
-        </v-card-row>
+        <jdy-panel :selectedItem="selectedItem" :classinfo="classinfo"></jdy-panel>
         <v-card-row actions>
-          <v-btn class="green--text darken-1" flat="flat" @click.native="dialog = false">Agree</v-btn>
-          <v-btn class="green--text darken-1" flat="flat" @click.native="dialog = false">Disagree</v-btn>
+          <v-btn class="green--text darken-1" flat="flat" @click.native="isEditDialogVisible = false">Agree</v-btn>
+          <v-btn class="green--text darken-1" flat="flat" @click.native="isEditDialogVisible = false">Disagree</v-btn>
         </v-card-row>
       </v-card>
     </v-dialog>
+
   <v-data-table   v-bind:headers="headers"  :items="items"   hide-actions  class="elevation-1">
     <template slot="items" scope="props">
         <td>
@@ -57,7 +53,7 @@
         selectedItem: null
       }
     }, 
-    props: ['items', 'columns'],
+    props: ['items', 'columns', 'classinfo'],
     computed: {
       // a computed getter
       headers: function () {
@@ -75,21 +71,7 @@
         // `this` inside methods points to the Vue instance
         console.log('Delete ' + listItem.name + '!');
         this.items.splice(this.items.findIndex(x => x.name === listItem.name),1);
-      },
-      getItemValue: function(value) {
-        return this.selectedItem ? value(this.selectedItem) : null;
-      },
-      updateItemValue: function(value, newValue) {
-
-        console.log('Selected Item ' + selectedItem + '!');
-        console.log('Value ' + value + '!');
-        console.log('New Value ' + newValue + '!');
-
-        if (this.selectedItem) {
-             this.selectedItem[value] = newValue;
-        }
       }
-
     }
   }
 </script>

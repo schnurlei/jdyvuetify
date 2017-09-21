@@ -1,10 +1,10 @@
 <template>
-    <jdy-table :items="holderItems" :columns="columns"></jdy-table>
+    <jdy-table :items="holderItems" :columns="columns" :classinfo="classinfo"></jdy-table>
 </template>
 
 <script>
 
- function primitiveTypeToColumnHandler(attrInfo) {
+    function primitiveTypeToColumnHandler(attrInfo) {
 
 	return {
             handleBoolean: function (aType) {

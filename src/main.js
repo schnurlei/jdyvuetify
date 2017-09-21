@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Vuetify from 'vuetify'
+import VeeValidate from 'vee-validate';
 import App from './js/App.vue'
 import JdyTable from './js/JdyTable.vue'
+import JdyPanel from './js/JdyPanel.vue'
 import JdyHolder from './js/JdyHolder.vue'
 import { testCreatePlantShopRepository} from './jdytest';
 import './css/main.css';
@@ -11,6 +13,7 @@ const pathToJson = require.context('./assets', true);
 
 Vue.use(VueRouter);
 Vue.use(Vuetify);
+Vue.use(VeeValidate);
 
 const plantRepository = testCreatePlantShopRepository();
 
@@ -29,6 +32,7 @@ const router = new VueRouter({
 
 Vue.component('jdy-table', JdyTable);
 Vue.component('jdy-holder', JdyHolder);
+Vue.component('jdy-panel', JdyPanel);
 
 
 const app = new Vue({
